@@ -32,7 +32,6 @@ class BaseArray(ABC):
 
 
 class SortedArray(BaseArray):
-
     def create_array(self, start=0, len_diff=0):
         # Преобразуем в массив итератор от 0 до числа, равного заданной длине
         self._array = array(range(start, self.len + len_diff))
