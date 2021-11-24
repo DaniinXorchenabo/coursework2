@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from array import ArrayType, array
 from time import time
+import random
 
 __all__ = ['ShellSort', 'HeapSort', 'QuickSort', "SortType"]
 
@@ -93,7 +94,20 @@ class QuickSort(BaseSort, ABC):
 
     @classmethod
     def sort(cls, a: ArrayType) -> float:
-        return 12.9
+        def quicksort(nums):
+            if len(nums) <= 1:
+                return nums
+            else:
+                q = random.choice(nums)
+            l_nums = [n for n in nums if n < q]
+
+            e_nums = [q] * nums.count(q)
+            b_nums = [n for n in nums if n > q]
+            return quicksort(l_nums) + e_nums + quicksort(b_nums)
+
+        start_time = time()
+        quicksort(a)
+        return time() - start_time
 
 
 SortType = BaseSort
