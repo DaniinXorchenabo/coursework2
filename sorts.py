@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from array import ArrayType, array
+from time import time
 
 __all__ = ['ShellSort', 'HeapSort', 'QuickSort', "SortType"]
 
@@ -18,7 +19,17 @@ class ShellSort(BaseSort, ABC):
 
     @classmethod
     def sort(cls, a: ArrayType) -> float:
-        return 43.8
+        start_time = time()
+        inc = len(a) // 2
+        while inc:
+            for i, el in enumerate(a):
+                while i >= inc and a[i - inc] > el:
+                    a[i] = a[i - inc]
+                    i -= inc
+                a[i] = el
+            inc = 1 if inc == 2 else int(inc * 5.0 / 11)
+
+        return time() - start_time
 
 
 class HeapSort(BaseSort, ABC):
