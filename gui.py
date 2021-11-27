@@ -76,6 +76,7 @@ with dpg.window(label="Tutorial", width=(width_ := 900)):
                     for j in range(0, 3):
                         dpg.add_text(f"Row{i} Column{j}")
 
+
     dpg.bind_font(font1)
 
 dpg.create_viewport(title='Custom Title', width=width_ + 15, height=600)
