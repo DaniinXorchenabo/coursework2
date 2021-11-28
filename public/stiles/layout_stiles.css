@@ -1,0 +1,48 @@
+.parent_box{
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 40px;
+}
+
+.child{
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin-right: 0px;
+}
+
+.input_box_parent{
+    text-align: center;
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: center;
+	align-items: stretch;
+	justify-content: center;
+    flex-direction: column ;
+}
+
+.array_box{
+	max-width: 400px;
+    text-align: center;
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: center;
+	align-items: stretch;
+	justify-content: center;
+    flex-direction: column ;
+}
+.input_box{
+	text-align: center;
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: center;
+	align-items: center;
+	justify-content: space-between;
+}

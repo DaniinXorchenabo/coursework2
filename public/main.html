@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/public/stiles/base_stiles.css">
+    <link rel="stylesheet" href="/public/stiles/table_stiles.css">
+    <link rel="stylesheet" href="/public/stiles/layout_stiles.css">
+
+    <script defer src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+    <script defer src="/public/scripts/transport.js"></script>
+    <script defer src="/public/scripts/validation.js"></script>
+    <script defer src="/public/scripts/graph.js"></script>
+
+
+</head>
+<body>
+<h1>Сравнение сортировок</h1>
+<div class="parent_box">
+
+    <div class="child input_box_parent">
+        <div class="array_box">
+            <h2>Упорядоченный</h2>
+            <div class="input_box">
+                <text>От</text>
+                <input id="sorted_from" value="0" placeholder="Введите число"
+                       oninput="correcting_number('sorted_from')"
+                       onchange="corrected_number('sorted_from')"/>
+                <text>до</text>
+                <input id="sorted_to" value="0" placeholder="Введите число"
+                       oninput="correcting_number('sorted_to')"
+                       onchange="corrected_number('sorted_to')"/>
+            </div>
+            <button>Нарисовать</button>
+
+        </div>
+        <div class="array_box">
+            <h2>Неупорядоченный</h2>
+            <div class="input_box">
+                <text>От</text>
+                <input id="unsorted_from" value="0" placeholder="Введите число"
+                       oninput="correcting_number('unsorted_from')"
+                       onchange="corrected_number('unsorted_from')"/>
+                <text>до</text>
+                <input id="unsorted_to" value="0" placeholder="Введите число"
+                       oninput="correcting_number('unsorted_to')"
+                       onchange="corrected_number('unsorted_to')"/>
+            </div>
+            <button>Нарисовать</button>
+        </div>
+        <div class="array_box">
+            <h2>Упорядоченный в обратном порядке</h2>
+            <div class="input_box">
+                <text>От</text>
+                <input id="reverse_sorted_from" value="0" placeholder="Введите число"
+                       oninput="correcting_number('reverse_sorted_from')"
+                       onchange="corrected_number('reverse_sorted_from')"/>
+                <text>до</text>
+                <input id="reverse_sorted_to" value="0" placeholder="Введите число"
+                       oninput="correcting_number('reverse_sorted_to')"
+                       onchange="corrected_number('reverse_sorted_to')"/>
+            </div>
+            <button>Нарисовать</button>
+        </div>
+    </div>
+    <div class="child">
+        <div id="my_graph" style="width:600px;height:250px;"></div>
+    </div>
+
+</div>
+<div class="table_box">
+    <table id="result_table">
+        <caption>Тип отображаемого массива</caption>
+        <thead>
+        <tr>
+            <th>Количество элементов</th>
+            <th>100</th>
+            <th>200</th>
+            <th>300</th>
+            <th>300</th>
+        </tr>
+        </thead>
+
+
+    </table>
+</div>
+
+</body>
+</html>
