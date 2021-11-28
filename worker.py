@@ -10,6 +10,9 @@ class Worker(ABC):
     sort_list: list[SortType] = [ShellSort, HeapSort, QuickSort]
     arrays_list: list[ArrayClassType] = [SortedArray, UnsortedArray, ReverseSortedArray]
 
+    def __init__(self, setup_count: int):
+        self.setup_count = setup_count
+
     def graphs(self, array_type: Type[ArrayClassType], start: int, end: int) \
             -> list[list[dict[int, float], SortType]]:
         """
