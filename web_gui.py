@@ -13,7 +13,7 @@ from worker import Worker
 app = FastAPI()
 
 
-class ArrayTypeEnum(enum.Enum, str):
+class ArrayTypeEnum(str, enum.Enum):
     sorted = "sorted"
     unsorted = "unsorted"
     reverse_sorted = "reverse_sorted"
