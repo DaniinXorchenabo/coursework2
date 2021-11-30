@@ -4,7 +4,7 @@ const button_handler = (event) => {
         const xhr = new XMLHttpRequest();
         const start = document.getElementById(`${event.target.id}_from`).value;
         const end = document.getElementById(`${event.target.id}_to`).value;
-        const setup_count = 10;
+        const setup_count = document.getElementById("iteration_count").value;
         const graph_text = event.target.attributes.graph_text.nodeValue;
         console.log(event, graph_text)
         xhr.open(

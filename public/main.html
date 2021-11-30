@@ -62,6 +62,14 @@
             </div>
             <button id="reverse_sorted" graph_text="Сортировки массиве, упорядоченном в обратную сторону">Нарисовать</button>
         </div>
+        <div class="array_box">
+            <div class="input_box">
+                <text>Количество итераций: </text>
+                <input id="iteration_count" value="10" placeholder="Количество итераций должно быть указано"
+                       oninput="correcting_number('iteration_count')"
+                       onchange="corrected_number('iteration_count')"/>
+            </div>
+        </div>
     </div>
     <div class="child">
         <div id="my_graph" style="width:600px;height:250px;"></div>
