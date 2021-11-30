@@ -20,6 +20,7 @@ const button_handler = (event) => {
                 console.log(xhr.status + ': ' + xhr.statusText);
             } else {
                 console.log(xhr.responseText);
+            draw_graph( JSON.parse( xhr.responseText));
             }
 
         }

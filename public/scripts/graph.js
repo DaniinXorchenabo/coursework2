@@ -1,37 +1,64 @@
-const rand = () => Math.random();
-var x = [1, 2, 3, 4, 5];
-const new_data = (trace) => Object.assign(trace, {y: x.map(rand)});
-
-// add random data to three line traces
-var data = [
-	{mode:'lines', line: {color: "#b55400"}},
-	{mode: 'lines', line: {color: "#393e46"}},
-	{mode: 'lines', line: {color: "#222831"}}
-].map(new_data);
-console.log(data)
-var layout = {
-	title: 'User Zoom Persists<br>When uirevision Unchanged',
-	uirevision:'true',
-	xaxis: {autorange: true},
-	yaxis: {autorange: true}
+// const rand = () => Math.random();
+// const new_data = (trace) => Object.assign(trace, {y: x.map(rand)});
+//
+// // add random data to three line traces
+// let data = [
+//     {mode: 'lines', line: {color: "#b55400"}},
+//     {mode: 'lines', line: {color: "#393e46"}},
+//     {mode: 'lines', line: {color: "#222831"}}
+// ].map(new_data);
+// console.log(data)
+const layout = {
+    title: 'User Zoom Persists<br>When uirevision Unchanged',
+    uirevision: 'true',
+    xaxis: {autorange: true},
+    yaxis: {autorange: true}
 };
 
-Plotly.react('my_graph', data, layout);
+Plotly.react('my_graph', [], layout);
 
-var myPlot = document.getElementById('my_graph');
+const myPlot = document.getElementById('my_graph');
 
-var cnt = 0;
-var interval = setInterval(function() {
-	data = data.map(new_data);
+let cnt = 0;
 
-	// user interaction will mutate layout and set autorange to false
-	// so we need to reset it to true
-	layout.xaxis.autorange = true;
-	layout.yaxis.autorange = true;
+const updating_graph_data = ([key, value, default_obj], index) => {
+    // console.log(key, value, default_obj, index)
+    return Object.assign(default_obj, {y: [...Object.values(value)]})
+}
 
-	// not changing uirevision will ensure that user interactions are unchanged
-	// layout.uirevision = rand();
+const draw_graph = (sorts_data) => {
 
-	Plotly.react('my_graph', data, layout);
-	if(cnt === 100) clearInterval(interval);
-}, 2500);
+    let graph_data = [
+        {mode: 'lines', line: {color: "#b55400"}},
+        {mode: 'lines', line: {color: "#393e46"}},
+        {mode: 'lines', line: {color: "#222831"}}
+    ]
+    // console.log([...Object.entries(sorts_data)])
+    let local_data = [...Object.entries(sorts_data)]
+        .map((el, ind) => el.concat([graph_data[ind]]))
+        .map(i => {console.log(i); return i})
+        .map(updating_graph_data);
+    layout.xaxis.autorange = true;
+    layout.yaxis.autorange = true;
+
+    // not changing uirevision will ensure that user interactions are unchanged
+    // layout.uirevision = rand();
+
+    Plotly.react('my_graph', local_data, layout);
+}
+
+
+// const interval = setInterval(() => {
+//     data = data.map(new_data);
+//
+//     // user interaction will mutate layout and set autorange to false
+//     // so we need to reset it to true
+//     layout.xaxis.autorange = true;
+//     layout.yaxis.autorange = true;
+//
+//     // not changing uirevision will ensure that user interactions are unchanged
+//     // layout.uirevision = rand();
+//
+//     Plotly.react('my_graph', data, layout);
+//     if (cnt === 100) clearInterval(interval);
+// }, 2500);
