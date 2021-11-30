@@ -22,10 +22,13 @@ class Worker(ABC):
         :param end: максимальная длина сортируемого массива
         :return:
         """
+        last_item = -1
         _iter = self._get_iterator(start, end, self.setup_count)
         arrays: dict[float, ArrayClassType] = {-1: array_type(0)}
         for i in _iter:
-            arrays[i] = arrays[-1].create_new_array(i)
+            arrays[i] = arrays[last_item].create_new_array(i)
+            last_item = i
+            # print(len(arrays[i]))
         arrays.pop(-1)
         return [[self._graph(sort_type, arrays), sort_type] for sort_type in self.sort_list]
 

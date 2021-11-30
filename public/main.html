@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="/public/stiles/layout_stiles.css">
 
     <script defer src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
-    <script defer src="/public/scripts/transport.js"></script>
     <script defer src="/public/scripts/validation.js"></script>
     <script defer src="/public/scripts/graph.js"></script>
+    <script defer src="/public/scripts/connect_with_server.js"></script>
 
 
 </head>
@@ -31,7 +31,7 @@
                        oninput="correcting_number('sorted_to')"
                        onchange="corrected_number('sorted_to')"/>
             </div>
-            <button>Нарисовать</button>
+            <button id="sorted">Нарисовать</button>
 
         </div>
         <div class="array_box">
@@ -46,7 +46,7 @@
                        oninput="correcting_number('unsorted_to')"
                        onchange="corrected_number('unsorted_to')"/>
             </div>
-            <button>Нарисовать</button>
+            <button id="unsorted">Нарисовать</button>
         </div>
         <div class="array_box">
             <h2>Упорядоченный в обратном порядке</h2>
@@ -60,7 +60,7 @@
                        oninput="correcting_number('reverse_sorted_to')"
                        onchange="corrected_number('reverse_sorted_to')"/>
             </div>
-            <button>Нарисовать</button>
+            <button id="reverse_sorted">Нарисовать</button>
         </div>
     </div>
     <div class="child">

@@ -40,7 +40,7 @@ class HeapSort(BaseSort, ABC):
     def sort(cls, a: ArrayType) -> float:
         start_time = time()
 
-        def _shift(a: ArrayType[int], index, l, r):
+        def _shift(a: ArrayType, index, l, r):
 
             def print_heap(*a, **k):
                 pass
@@ -67,25 +67,25 @@ class HeapSort(BaseSort, ABC):
             print_heap(a)
             return a
 
-        def create_heap(a: ArrayType[int]) -> ArrayType[int]:
-            a = [float("-inf")] + a
+        def create_heap(a: ArrayType) -> ArrayType:
+            a.insert(0, int(0))
             [_shift(a, i, 0, len(a)) for i in range(len(a) // 2 - 1, 0, -1)]
             return a
 
-        def _sort_shift(a: ArrayType[int], min_el_index, next_index) -> None:
+        def _sort_shift(a: ArrayType, min_el_index, next_index) -> None:
             # print(a)
             a[min_el_index], a[next_index] = a[next_index], a[min_el_index]
             # print(a)
             _shift(a, min_el_index, 0, next_index)
             return None
 
-        def _heap_sort(a: ArrayType[int]) -> ArrayType[int]:
+        def _heap_sort(a: ArrayType) -> ArrayType:
             [(_sort_shift(a, 1, i), print(i)) for i in range(len(a) - 1, 0, -1)]
             return a
 
         a = create_heap(a)
         a = _heap_sort(a)
-        # print(a)
+        print(time() - start_time, len(a))
         return time() - start_time
 
 

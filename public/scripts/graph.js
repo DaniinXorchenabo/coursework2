@@ -8,7 +8,7 @@ var data = [
 	{mode: 'lines', line: {color: "#393e46"}},
 	{mode: 'lines', line: {color: "#222831"}}
 ].map(new_data);
-
+console.log(data)
 var layout = {
 	title: 'User Zoom Persists<br>When uirevision Unchanged',
 	uirevision:'true',

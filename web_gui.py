@@ -33,7 +33,9 @@ async def get_ui():
 
 @app.get("/get_graphs_data")
 async def get_graphs_data(array_type: ArrayTypeEnum, start: int, end: int, setup_count: int = 10):
-    return Worker(setup_count).graphs(enum_to_array[array_type], start=start, end=end)
+    data =  Worker(setup_count).graphs(enum_to_array[array_type], start=start, end=end)
+    print(data)
+    return {cl.name: val for [val, cl] in data}
 
 
 app.mount("/public", StaticFiles(directory=join(split(__file__)[0], 'public')), name="static")
