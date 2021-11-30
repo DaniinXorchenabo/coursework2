@@ -9,7 +9,7 @@
 // ].map(new_data);
 // console.log(data)
 const layout = {
-    title: 'User Zoom Persists<br>When uirevision Unchanged',
+    title: 'Типы сортировок',
     uirevision: 'true',
     xaxis: {autorange: true},
     yaxis: {autorange: true}
@@ -23,21 +23,27 @@ let cnt = 0;
 
 const updating_graph_data = ([key, value, default_obj], index) => {
     // console.log(key, value, default_obj, index)
-    return Object.assign(default_obj, {y: [...Object.values(value)]})
+    return Object.assign(default_obj, {
+        x: [...Object.keys(value)],
+        y: [...Object.values(value)],
+         name: key
+    })
 }
 
-const draw_graph = (sorts_data) => {
+const draw_graph = (sorts_data, graph_text="Типы сортировок") => {
 
     let graph_data = [
         {mode: 'lines', line: {color: "#b55400"}},
-        {mode: 'lines', line: {color: "#393e46"}},
-        {mode: 'lines', line: {color: "#222831"}}
+        {mode: 'lines', line: {color: "#005cfa"}},
+        {mode: 'lines', line: {color: "#27c400"}}
     ]
     // console.log([...Object.entries(sorts_data)])
     let local_data = [...Object.entries(sorts_data)]
         .map((el, ind) => el.concat([graph_data[ind]]))
         .map(i => {console.log(i); return i})
         .map(updating_graph_data);
+    layout.title = graph_text;
+    console.log( layout.title)
     layout.xaxis.autorange = true;
     layout.yaxis.autorange = true;
 

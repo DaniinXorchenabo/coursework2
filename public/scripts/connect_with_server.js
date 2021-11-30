@@ -5,6 +5,8 @@ const button_handler = (event) => {
         const start = document.getElementById(`${event.target.id}_from`).value;
         const end = document.getElementById(`${event.target.id}_to`).value;
         const setup_count = 10;
+        const graph_text = event.target.attributes.graph_text.nodeValue;
+        console.log(event, graph_text)
         xhr.open(
             'GET',
             `${document.location.protocol}//${document.location.host}/get_graphs_data?array_type=${event.target.id}&start=${start}&end=${end}&setup_count=${setup_count}`,
@@ -20,7 +22,7 @@ const button_handler = (event) => {
                 console.log(xhr.status + ': ' + xhr.statusText);
             } else {
                 console.log(xhr.responseText);
-            draw_graph( JSON.parse( xhr.responseText));
+            draw_graph( JSON.parse( xhr.responseText), graph_text);
             }
 
         }
