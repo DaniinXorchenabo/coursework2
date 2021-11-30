@@ -31,11 +31,15 @@ table thead tr{
 }
 
 table thead tr th{
-	padding-left: 18px;
+	padding-left: 5px;
 	padding-right: 5px;
 	padding-top: 10px;
 	padding-bottom: 15px;
-	margin-left: 10px;
+	text-align: center;
+	vertical-align: middle;
+	horiz-align: center;
+	/*hor*/
+	/*margin-left: 10px;*/
 }
 
 table tr{
@@ -45,9 +49,13 @@ table tr{
 
 table tr td{
 	padding-left: 5px;
-	padding-right: 50px;
+	padding-right: 5px;
 	padding-top: 5px;
 	padding-bottom: 10px;
+    text-align: center;
+	vertical-align: middle;
+	horiz-align: center;
+	width: inherit;
 }
 
 table tr:hover {
