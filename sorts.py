@@ -21,6 +21,11 @@ class ShellSort(BaseSort, ABC):
     @classmethod
     def sort(cls, a: ArrayType) -> float:
         start_time = time()
+        cls._sort(a)
+        return time() - start_time
+
+    @classmethod
+    def _sort(cls, a: ArrayType) -> array:
         inc = len(a) // 2
         while inc:
             for i, el in enumerate(a):
@@ -29,8 +34,7 @@ class ShellSort(BaseSort, ABC):
                     i -= inc
                 a[i] = el
             inc = 1 if inc == 2 else int(inc * 5.0 / 11)
-
-        return time() - start_time
+        return a
 
 
 class HeapSort(BaseSort, ABC):
@@ -39,7 +43,11 @@ class HeapSort(BaseSort, ABC):
     @classmethod
     def sort(cls, a: ArrayType) -> float:
         start_time = time()
+        cls._sort(a)
+        return time() - start_time
 
+    @classmethod
+    def _sort(cls, a: ArrayType):
         def _shift(a: ArrayType, index, l, r):
 
             def print_heap(*a, **k):
@@ -80,13 +88,12 @@ class HeapSort(BaseSort, ABC):
             return None
 
         def _heap_sort(a: ArrayType) -> ArrayType:
-            [(_sort_shift(a, 1, i), print(i)) for i in range(len(a) - 1, 0, -1)]
+            [_sort_shift(a, 1, i) for i in range(len(a) - 1, 0, -1)]
             return a
 
         a = create_heap(a)
         a = _heap_sort(a)
-        print(time() - start_time, len(a))
-        return time() - start_time
+        return a
 
 
 class QuickSort(BaseSort, ABC):
@@ -94,6 +101,12 @@ class QuickSort(BaseSort, ABC):
 
     @classmethod
     def sort(cls, a: ArrayType) -> float:
+        start_time = time()
+        cls._sort(a)
+        return time() - start_time
+
+    @classmethod
+    def _sort(cls, a:ArrayType):
         def quicksort(nums):
             if len(nums) <= 1:
                 return nums
@@ -105,9 +118,7 @@ class QuickSort(BaseSort, ABC):
             b_nums = [n for n in nums if n > q]
             return quicksort(l_nums) + e_nums + quicksort(b_nums)
 
-        start_time = time()
-        quicksort(a)
-        return time() - start_time
+        return quicksort(a)
 
 
 SortType = BaseSort
