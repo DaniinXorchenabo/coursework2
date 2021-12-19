@@ -1,14 +1,5 @@
-// const rand = () => Math.random();
-// const new_data = (trace) => Object.assign(trace, {y: x.map(rand)});
-//
-// // add random data to three line traces
-// let data = [
-//     {mode: 'lines', line: {color: "#b55400"}},
-//     {mode: 'lines', line: {color: "#393e46"}},
-//     {mode: 'lines', line: {color: "#222831"}}
-// ].map(new_data);
-// console.log(data)
-const layout = {
+
+let layout = {
     title: 'Типы сортировок',
     uirevision: 'true',
     xaxis: {autorange: true},
@@ -25,7 +16,7 @@ const updating_graph_data = ([key, value, default_obj], index) => {
         name: key
     })
 }
-console.log(4 % 0);
+
 const draw_graph = (sorts_data, graph_text = "Типы сортировок") => {
 
     let graph_data = [
@@ -33,7 +24,6 @@ const draw_graph = (sorts_data, graph_text = "Типы сортировок") =>
         {mode: 'lines', line: {color: "#005cfa"}},
         {mode: 'lines', line: {color: "#27c400"}}
     ]
-    // console.log([...Object.entries(sorts_data)])
     const raw_data = [...Object.entries(sorts_data)]
     let local_data = raw_data
         .map((el, ind) => el.concat([graph_data[ind]]))
